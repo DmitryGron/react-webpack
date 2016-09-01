@@ -81,4 +81,29 @@ Here we can define the port of the server and the error handling:
 
 ## Production server
 The configuration of the production server can be found in the file `server.js`.
-Here you can simply setup the server for the production mode.
+Here you can simply setup the server for the production mode. It is configured with node's express.
+
+## Webpack
+There are two webpack configuration files:
+* `webpack.config.dev.js` (developer configuration)
+* `webpack.config.prod.js` (production configuration)
+
+In the production version there are some plugins for minification and compression.
+
+## Hey, where's my index.html??!
+In this setup there is a [Embedded Javascript File](http://www.embeddedjs.com/), short `.ejs`. You do not need to insert your script files or the style sheets. Webpack is doing the job with this configuration. All you need is a `<body>`-tag in which you create a `<div>` in which we will load our app. If you need stylesheets call a `require` in your JS-Files and webpack knows to insert it into your application. Great :) Same thing with our images, javascript files and even the favicon.ico will be loaded with webpack into your application.
+```html
+<body>
+    <div id="root"></div>    
+</body>
+```
+
+## JSX
+In the `src`-folder are only `.jsx`-files. Those files will be compiled by webpack into browser readable javascript files. As you can see in the webpack configuration it is `babel` which does this job.
+
+## SCSS
+There is a scss and css loader included into the webpack configuration. So you can write your styles in the format you like and webpack helps you if you require your stylesheets in the javascript.
+
+```Javascript
+import styles from './Navigation.scss';
+```
