@@ -35,7 +35,7 @@ The production mode is usually set by the variable `NODE_ENV`. With `if-enf` we 
 "start:dev": "node dev-server.js",
 ```
 
-***Start:prod*** - This script runs the productiv build and the production server.The configuration of this server is found in the `server.js`;
+***Start:prod*** - This script runs the productive build and the production server.The configuration of this server is found in the `server.js`;
 ```
 "start:prod": "npm run build-prod && node server.js",
 ```
@@ -82,6 +82,8 @@ Here we can define the port of the server and the error handling:
 ## Production server
 The configuration of the production server can be found in the file `server.js`.
 Here you can simply setup the server for the production mode. It is configured with node's express.
+
+> The productive server is running under [localhost:8080](http://localhost:8080)
 
 ## Webpack
 There are two webpack configuration files:
