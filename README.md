@@ -21,6 +21,7 @@ SET "NODE_ENV=production" && npm start
 NODE_ENV=production npm start
 ``` 
 > open browser at [http://localhost:4200](http://localhost:4200/)
+
 ---
 ## Explanation
 This project provides a setup for further projects with React JS. Webpack is the build system and there is a production and a developer mode. You will find the descriptions below.
