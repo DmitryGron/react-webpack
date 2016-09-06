@@ -1,9 +1,15 @@
 import React from 'react';
 
-export default React.createClass({
-    render(){
+export default class Home extends React.Component {
+
+    render() {
         return (
-            <div>Welcome Home</div>
+            <div>
+                <div>Welcome Home</div>
+                {Math.pow(5,2)}   
+                <hr/>
+                            
+            </div>
         )
     }
-})
+}

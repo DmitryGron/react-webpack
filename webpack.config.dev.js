@@ -1,7 +1,12 @@
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var combineLoaders = require('webpack-combine-loaders');
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const combineLoaders = require('webpack-combine-loaders');
+
+const PATHS = {
+    build: path.join(__dirname, 'dist'),
+    src: path.join(__dirname, 'src')
+}
 
 module.exports = {
     devtool: 'eval',
@@ -11,7 +16,7 @@ module.exports = {
         './src/index.jsx'
     ],
     output: {
-        path: path.join(__dirname, 'dist'),
+        path: PATHS.build,
         filename: 'bundle.js',
         publicPath: '/'
     },
@@ -25,9 +30,9 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.jsx?$/,
+                test: /\.(js|jsx)$/,
                 loaders: ['react-hot', 'babel'],
-                include: path.join(__dirname, 'src')
+                include: PATHS.src
             },            
             {
                 test: /\.s?css$/,
