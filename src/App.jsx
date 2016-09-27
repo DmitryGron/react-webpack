@@ -1,16 +1,15 @@
 import React from 'react';
-import Navigation from './Navigation';
-import Home from './Home';
-
+import { render } from 'react-dom';
 import styles from './styles.scss';
 
-export default React.createClass({
-  render() {
-    return <div>
-        <Navigation></Navigation>
-        <div className={styles.routerOutlet}>
-          {this.props.children || <Home/>}
-        </div>                
-    </div>
-  }
-})
+require('./img/favicon.ico');
+
+const App = () => {  
+  return (
+    <div>
+      <button>Hallo</button>      
+    </div>        
+  )
+};
+
+export default App;
