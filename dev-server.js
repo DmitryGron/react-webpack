@@ -5,6 +5,7 @@ var config = require('./webpack.config.dev');
 new WebpackDevServer(webpack(config), {
     publicPath: config.output.publicPath,
     hot: true,
+    stats: { colors: true },
     historyApiFallback: true,
     contentBase: "/dist/" //index.html
 }).listen(3000, 'localhost', function (err, result) {
