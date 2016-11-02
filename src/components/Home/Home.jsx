@@ -7,7 +7,7 @@ export default class Home extends React.Component {
         console.log(cat.name);
 
         try{
-        cat.meow = function(){console.log('hohoh')};
+            cat.meow = function(){console.log('hohoh')};
         }catch(e){
             console.error('throws an error because of the "readonly" decorator');
         }
@@ -18,9 +18,7 @@ export default class Home extends React.Component {
     render() {
         return (
             <div>
-                <div>Welcome Home</div>
-                {Math.pow(5, 2) }
-                <hr/>
+                <h1>Welcome Home</h1>                                
             </div>
         )
     }
