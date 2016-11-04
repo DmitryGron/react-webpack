@@ -1,5 +1,4 @@
 import React from 'react';
-import Navigation from './../Navigation/Navigation';
 import * as Rx from 'rxjs';
 
 function* fibonacci() {
@@ -29,8 +28,7 @@ export default class ReactivePlayground extends React.Component {
 
     render() {
         return (
-            <div>
-                <Navigation></Navigation>
+            <div>                
                 <p>Playground</p>
             </div>
         );

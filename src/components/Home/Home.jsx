@@ -1,4 +1,6 @@
 import React from 'react';
+import Navigation from './../Navigation/Navigation';
+import styles from './../../styles/styles.scss';
 
 export default class Home extends React.Component {
 
@@ -6,19 +8,22 @@ export default class Home extends React.Component {
         let cat = new Cat('yo');
         console.log(cat.name);
 
-        try{
-            cat.meow = function(){console.log('hohoh')};
-        }catch(e){
+        try {
+            cat.meow = function () { console.log('hohoh') };
+        } catch (e) {
             console.error('throws an error because of the "readonly" decorator');
         }
-        
-        console.log(Cat.isSupercat);        
+
+        console.log("Cat is supercat: " + Cat.isSupercat);
     }
 
     render() {
         return (
             <div>
-                <h1>Welcome Home</h1>                                
+                <Navigation></Navigation>                
+                <div className={styles.routerOutlet}>
+                    {this.props.children}
+                </div>
             </div>
         )
     }
@@ -37,11 +42,11 @@ function readonly(target, key, descriptor) {
 
 @supercat
 class Cat {
-    constructor(name){
+    constructor(name) {
         this.name = name;
     }
     @readonly
-    meow(){
+    meow() {
         return 'yo';
     }
 }

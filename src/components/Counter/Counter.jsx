@@ -1,5 +1,4 @@
 import React from 'react';
-import Navigation from './../Navigation/Navigation';
 
 export default class Counter extends React.Component {
     constructor() {
@@ -27,8 +26,7 @@ export default class Counter extends React.Component {
 
     render() {
         return (
-            <div>
-                <Navigation></Navigation>
+            <div>                
                 <p>Count: {this.state.count}</p>
                 <button onClick={() => this.increment()}>Increment +1</button>
                 <button onClick={() => this.square()}>Square</button>

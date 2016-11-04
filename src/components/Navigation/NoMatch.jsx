@@ -1,17 +1,13 @@
 import React from 'react';
 import Navigation from './Navigation';
+import { IndexLink } from 'react-router';
 
 export default class Counter extends React.Component {
-    constructor() {
-        super();
-        this.state = { count: 0 };
-    }
-
     render() {
         return (
             <div>
-                <Navigation></Navigation>
                 <p>This page does not exist!</p>
+                <p><IndexLink to="/">Go home</IndexLink></p>
             </div>
         );
     }
