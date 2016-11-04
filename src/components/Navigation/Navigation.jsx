@@ -10,6 +10,8 @@ import IconButton from 'material-ui/IconButton';
 import IconMenu from 'material-ui/IconMenu';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import RaisedButton from 'material-ui/RaisedButton';
+import { withRouter } from 'react-router';
+import Logged from './Logged';
 
 export default class Navigation extends React.Component {
     constructor(props) {
@@ -21,10 +23,11 @@ export default class Navigation extends React.Component {
 
     handleClose = () => this.setState({ open: false });
 
+
     render() {
         return <div>
             <AppBar
-                title="React Webpack Starter"                
+                title="React Webpack Starter"
                 onLeftIconButtonTouchTap={this.handleToggle}
                 iconElementRight={<Logged />}
                 />
@@ -34,28 +37,13 @@ export default class Navigation extends React.Component {
                 open={this.state.open}
                 onRequestChange={(open) => this.setState({ open })}
                 >
-                <MenuItem><NavLink to="/" onTouchTap={this.handleClose}>Start</NavLink></MenuItem>
-                <MenuItem><NavLink to="/counter" onTouchTap={this.handleClose}>Counter</NavLink></MenuItem>
-                <MenuItem><NavLink to="/about" onTouchTap={this.handleClose}>About</NavLink></MenuItem>
-                <MenuItem><NavLink to="/search" onTouchTap={this.handleClose}>Search</NavLink></MenuItem>
-                <MenuItem><NavLink to="/repos" onTouchTap={this.handleClose}>Repos</NavLink></MenuItem>
-                <MenuItem><NavLink to="/reactive" onTouchTap={this.handleClose}>Reactive</NavLink></MenuItem>
+                <MenuItem><NavLink to="/app" onTouchTap={this.handleClose} onlyActiveOnIndex={true}>Start</NavLink></MenuItem>
+                <MenuItem><NavLink to="/app/counter" onTouchTap={this.handleClose}>Counter</NavLink></MenuItem>
+                <MenuItem><NavLink to="/app/about" onTouchTap={this.handleClose}>About</NavLink></MenuItem>
+                <MenuItem><NavLink to="/app/search" onTouchTap={this.handleClose}>Search</NavLink></MenuItem>
+                <MenuItem><NavLink to="/app/repos" onTouchTap={this.handleClose}>Repos</NavLink></MenuItem>
+                <MenuItem><NavLink to="/app/reactive" onTouchTap={this.handleClose}>Reactive</NavLink></MenuItem>
             </Drawer>
         </div>
     }
 }
-
-const Logged = (props) => (
-    <IconMenu
-        {...props}
-        iconButtonElement={
-            <IconButton><MoreVertIcon /></IconButton>
-        }
-        targetOrigin={{ horizontal: 'right', vertical: 'top' }}
-        anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
-        >
-        <MenuItem primaryText="Refresh" />
-        <MenuItem primaryText="Help" />
-        <MenuItem primaryText="Sign out" />
-    </IconMenu>
-);
