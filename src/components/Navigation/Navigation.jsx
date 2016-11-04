@@ -23,7 +23,6 @@ export default class Navigation extends React.Component {
 
     handleClose = () => this.setState({ open: false });
 
-
     render() {
         return <div>
             <AppBar

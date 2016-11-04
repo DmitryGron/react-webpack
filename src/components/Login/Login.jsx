@@ -2,32 +2,38 @@ import React from 'react';
 import TextField from 'material-ui/TextField';
 import FlatButton from 'material-ui/FlatButton';
 import { withRouter } from 'react-router';
+import loginStyles from './login.scss';
 
 class Login extends React.Component {
 
     constructor(props) {
         super(props);
-        this.login = this.login.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    login() {        
+    handleSubmit(event) {
+        event.preventDefault();
         localStorage.setItem("loggedIn", true);
         this.props.router.push('/app');
     }
 
     render() {
-        return <div>
-            <TextField
-                hintText="Username"
-                floatingLabelText="Username"
-                type="text"
-                />
-            <TextField
-                hintText="Password Field"
-                floatingLabelText="Password"
-                type="password"
-                />
-            <FlatButton label="Login" onClick={this.login} />
+        return <div className={loginStyles.loginPage}>
+            <div className={loginStyles.loginContainer}>
+                <form className={loginStyles.loginForm} onSubmit={this.handleSubmit}>
+                    <TextField
+                        hintText="Username"
+                        floatingLabelText="Username"
+                        type="text"
+                        />
+                    <TextField
+                        hintText="Password Field"
+                        floatingLabelText="Password"
+                        type="password"
+                        />
+                    <FlatButton label="Login" type="submit"></FlatButton>
+                </form>
+            </div>
         </div>
     }
 };
