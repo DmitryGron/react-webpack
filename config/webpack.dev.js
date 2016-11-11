@@ -1,19 +1,16 @@
 const path = require('path');
+var fs = require('fs');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const combineLoaders = require('webpack-combine-loaders');
-
-const PATHS = {
-    build: path.join(__dirname, 'dist'),
-    src: path.join(__dirname, 'src')
-}
+const PATHS = require('./paths');
 
 module.exports = {
     devtool: 'eval',
     entry: [
         'webpack-dev-server/client?http://localhost:3000',
         'webpack/hot/only-dev-server',
-        './src/index.jsx'
+        PATHS.index
     ],
     output: {
         path: PATHS.build,
@@ -23,7 +20,7 @@ module.exports = {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
-            template: 'index.template.ejs',
+            template: 'index.html',
             inject: 'body'
         })
     ],
@@ -33,7 +30,7 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 loaders: ['react-hot', 'babel'],
                 include: PATHS.src
-            },            
+            },
             {
                 test: /\.s?css$/,
                 exclude: /node_modules/,
@@ -54,7 +51,6 @@ module.exports = {
                             sourceMap: true,
                             includePaths: [
                                 'src'
-                                // 'app/assets/stylesheets/legacy',
                             ]
                         }
                     }

@@ -3,14 +3,15 @@ var path = require('path');
 var combineLoaders = require('webpack-combine-loaders');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var PATHS = require('./paths');
 
 module.exports = {
     devtool: 'source-map',
     entry: {
-        app: './src/index.jsx'
+        app: PATHS.index
     },
     output: {
-        path: path.join(__dirname, 'dist'),
+        path: PATHS.build,
         filename: 'javascript-[chunkhash].js'
     },
     plugins: [
@@ -36,7 +37,7 @@ module.exports = {
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.DedupePlugin(),
         new HtmlWebpackPlugin({
-            template: 'index.template.ejs',
+            template: 'index.html',
             inject: 'body',
             minify: {
                 removeComments: true,
@@ -56,7 +57,8 @@ module.exports = {
             {
                 test: /\.jsx?$/,
                 loaders: ['babel'],
-                include: path.join(__dirname, 'src')
+                include: PATHS.src,
+                exclude: /node_modules/
             },
             {
                 test: /\.s?css$/,
